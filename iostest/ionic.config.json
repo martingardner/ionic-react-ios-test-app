@@ -1,0 +1,7 @@
+{
+  "name": "iostest",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
