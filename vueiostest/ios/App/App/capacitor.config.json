@@ -1,0 +1,8 @@
+{
+  "appId": "com.example.app",
+  "appName": "vue-ios-test",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist",
+  "cordova": {}
+}
