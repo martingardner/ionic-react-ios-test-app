@@ -14,7 +14,6 @@
 
 <script>
 import Navigation from "@/components/Navigation.vue";
-
 import { Plugins } from "@capacitor/core";
 
 const { Geolocation } = Plugins;
@@ -34,11 +33,14 @@ export default {
     geolocation: async () => {
       const coordinates = await Geolocation.getCurrentPosition();
       console.log("Current", coordinates);
+      console.log("Current coords", coordinates.coords);
+      console.log('latitude', coordinates.coords.latitude);
+      console.log('current data latitude', this.lat);
     }
   },
   created() {
     console.log("created");
-    this.geolocation;
+    this.geolocation();
   }
 };
 </script>
