@@ -42,6 +42,7 @@ export default {
 <style></style>
 
 <!--
+https://stackoverflow.com/questions/54955426/how-to-use-async-await-in-vue-js
 https://ionicframework.com/docs/native/camera
-https://www.npmjs.com/package/@ionic-native/camera
+https://capacitor.ionicframework.com/docs/guides/ionic-framework-app/
 -->

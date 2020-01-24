@@ -21,7 +21,15 @@
         <ion-item button @click="$router.push('/picture')">
           <ion-icon name="home"></ion-icon>
           <ion-label>
-              <span>Picture</span>
+            <span>Picture</span>
+          </ion-label>
+        </ion-item>
+      </li>
+      <li>
+        <ion-item button @click="$router.push('/geolocation')">
+          <ion-icon name="home"></ion-icon>
+          <ion-label>
+            <span>Geolocation</span>
           </ion-label>
         </ion-item>
       </li>
@@ -34,3 +42,14 @@ export default {
   name: "Navigation"
 };
 </script>
+
+<style>
+ul {
+  list-item-image: none;
+}
+
+ul li {
+  display: inline-block;
+  margin-right: 5px;
+}
+</style>
