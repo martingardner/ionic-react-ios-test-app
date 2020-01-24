@@ -17,6 +17,14 @@
           </ion-label>
         </ion-item>
       </li>
+      <li>
+        <ion-item button @click="$router.push('/picture')">
+          <ion-icon name="home"></ion-icon>
+          <ion-label>
+              <span>Picture</span>
+          </ion-label>
+        </ion-item>
+      </li>
     </ul>
   </div>
 </template>

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Home from "@/views/Home.vue";
 import About from "@/views/About.vue";
+import Picture from "@/views/Picture.vue";
 import { IonicVueRouter } from "@ionic/vue";
 
 Vue.use(IonicVueRouter);
@@ -18,6 +19,11 @@ export default new IonicVueRouter({
       path: "/about",
       name: "about",
       component: About
+    },
+    {
+      path: "/picture",
+      name: "picture",
+      component: Picture
     }
   ]
 });
