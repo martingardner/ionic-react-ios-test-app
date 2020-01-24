@@ -5,7 +5,7 @@
       <Navigation />
       <h1>Picture Page</h1>
       <div>
-        <ion-button>Take Picture</ion-button>
+        <ion-button @click="takePicture">Take Picture</ion-button>
       </div>
     </ion-content>
   </div>
