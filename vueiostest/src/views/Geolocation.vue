@@ -7,6 +7,7 @@
       <div class="coordinates">
         <div>lat: {{ lat }}</div>
         <div>long: {{ lng }}</div>
+        <div>speed: {{ spd }}</div>
       </div>
     </ion-content>
   </div>
@@ -23,24 +24,43 @@ export default {
   data() {
     return {
       lat: 0,
-      lng: 0
+      lng: 0,
+      spd: 0
     };
   },
   components: {
     Navigation
   },
   methods: {
-    geolocation: async () => {
-      const coordinates = await Geolocation.getCurrentPosition();
-      console.log("Current", coordinates);
-      console.log("Current coords", coordinates.coords);
-      console.log('latitude', coordinates.coords.latitude);
-      console.log('current data latitude', this.lat);
+    geolocation() {
+      let $data = this;
+      async function getCoords() {
+        const coordinates = await Geolocation.getCurrentPosition();
+        console.log("Current", coordinates);
+        console.log("Current coords", coordinates.coords);
+        console.log("latitude", coordinates.coords.latitude);
+        console.log("current data latitude", $data.lat);
+
+        $data.lat = coordinates.coords.latitude;
+        $data.lng = coordinates.coords.longitude;
+        $data.spd = coordinates.coords.speed || 0;
+      }
+
+      getCoords();
+    },
+    geolocationInterval() {
+      /*
+      setInterval(() => {
+        console.log("hit");
+        this.geolocation();
+      }, 1000);
+      */
     }
   },
   created() {
     console.log("created");
     this.geolocation();
+    //this.geolocationInterval();
   }
 };
 </script>
