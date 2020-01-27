@@ -38,16 +38,16 @@ export default {
     geolocation() {
       let $data = this;
       let $active = false;
-      console.log("$active", $active);
+      //console.log("$active", $active);
       async function getCoords() {
         $active = true;
         const coordinates = await Geolocation.getCurrentPosition();
 
-        console.log("Current", coordinates);
-        console.log("Current coords", coordinates.coords);
-        console.log("latitude", coordinates.coords.latitude);
-        console.log("current data latitude", $data.lat);
-        console.log("after async $active", $active);
+        //console.log("Current", coordinates);
+        //console.log("Current coords", coordinates.coords);
+        //console.log("latitude", coordinates.coords.latitude);
+        //console.log("current data latitude", $data.lat);
+        //console.log("after async $active", $active);
 
         $data.lat = coordinates.coords.latitude;
         $data.lng = coordinates.coords.longitude;
@@ -70,15 +70,15 @@ export default {
       );
 
       this.watchId = id;
-      console.log("hit");
+      //console.log("hit");
     },
     watchError(err) {
-      console.log("err", err);
+      //console.log("err", err);
       this.watchErr = err.message;
     }
   },
   created() {
-    console.log("created");
+    //console.log("created");
     //this.geolocation();
     this.geolocationWatch();
     //this.geolocationWatch();
