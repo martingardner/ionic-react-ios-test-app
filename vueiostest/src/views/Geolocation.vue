@@ -8,6 +8,7 @@
         <div>lat: {{ lat }}</div>
         <div>long: {{ lng }}</div>
         <div>speed: {{ spd }}</div>
+        <div v-if="this.watchErr">{{ watchErr }}</div>
       </div>
     </ion-content>
   </div>
@@ -25,7 +26,8 @@ export default {
     return {
       lat: 0,
       lng: 0,
-      spd: 0
+      spd: 0,
+      watchErr: null
     };
   },
   components: {
@@ -60,12 +62,14 @@ export default {
           maximumAge: 0
         }
       );
+
     },
     geolocationWatchData(data) {
       //console.log("geolocationWatch Data", data);
       this.lat = data.coords.latitude;
       this.lng = data.coords.longitude;
       this.spd = data.coords.speed || 0;
+
     },
     watchError(err) {
       //console.log("err", err);
@@ -73,7 +77,6 @@ export default {
     }
   },
   created() {
-    //this.geolocation();
     this.geolocationWatch();
   }
 };
