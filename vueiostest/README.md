@@ -1,29 +1,35 @@
 # vueiostest
 
 ## Project setup
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 npm run serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 npm run build
 ```
 
 ### Lints and fixes files
+
 ```
 npm run lint
 ```
 
 ### for IoS Xcode build
+
 ```
 npx cap add ios
 ```
+
 - note if it complains about missing cocoapods
 
 ```
@@ -39,4 +45,14 @@ npm run build; npx cap sync
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+add to config.xml
+
+  <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+   <string>Get Position</string>
+</edit-config>
+<edit-config file="*-Info.plist" mode="merge" target="NSLocationAlwaysUsageDescription">
+   <string>Get position</string>
+</edit-config>
