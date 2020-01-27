@@ -8,7 +8,6 @@
         <div>lat: {{ lat }}</div>
         <div>long: {{ lng }}</div>
         <div>speed: {{ spd }}</div>
-        <div v-if="this.watchErr">watchPosition error: {{ watchErr }}</div>
       </div>
     </ion-content>
   </div>
@@ -26,9 +25,7 @@ export default {
     return {
       lat: 0,
       lng: 0,
-      spd: 0,
-      watchErr: "",
-      watchId: null
+      spd: 0
     };
   },
   components: {
@@ -37,30 +34,33 @@ export default {
   methods: {
     geolocation() {
       let $data = this;
+<<<<<<< HEAD
       let $active = false;
       //console.log("$active", $active);
+=======
+>>>>>>> 62fcb94d8f8bae422f31c34a620af0140de660d5
       async function getCoords() {
-        $active = true;
         const coordinates = await Geolocation.getCurrentPosition();
 
         //console.log("Current", coordinates);
         //console.log("Current coords", coordinates.coords);
         //console.log("latitude", coordinates.coords.latitude);
         //console.log("current data latitude", $data.lat);
+<<<<<<< HEAD
         //console.log("after async $active", $active);
+=======
+>>>>>>> 62fcb94d8f8bae422f31c34a620af0140de660d5
 
         $data.lat = coordinates.coords.latitude;
         $data.lng = coordinates.coords.longitude;
         $data.spd = coordinates.coords.speed || 0;
-        $active = false;
       }
-      if (!$active) {
-        getCoords();
-      }
+
+      getCoords();
     },
     geolocationWatch() {
-      let id = navigator.geolocation.watchPosition(
-        this.geolocation,
+      navigator.geolocation.watchPosition(
+        this.geolocationWatchData,
         this.watchError,
         {
           enableHighAccuracy: true,
@@ -68,9 +68,18 @@ export default {
           maximumAge: 0
         }
       );
+<<<<<<< HEAD
 
       this.watchId = id;
       //console.log("hit");
+=======
+    },
+    geolocationWatchData(data) {
+      //console.log("geolocationWatch Data", data);
+      this.lat = data.coords.latitude;
+      this.lng = data.coords.longitude;
+      this.spd = data.coords.speed || 0;
+>>>>>>> 62fcb94d8f8bae422f31c34a620af0140de660d5
     },
     watchError(err) {
       //console.log("err", err);
@@ -78,10 +87,12 @@ export default {
     }
   },
   created() {
+<<<<<<< HEAD
     //console.log("created");
+=======
+>>>>>>> 62fcb94d8f8bae422f31c34a620af0140de660d5
     //this.geolocation();
     this.geolocationWatch();
-    //this.geolocationWatch();
   }
 };
 </script>
