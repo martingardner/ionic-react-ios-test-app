@@ -44,6 +44,8 @@
 	<string>[App Name] would like to access your location when running and displayed.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>[App Name] would like to access your location when running and displayed.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>[App Name] would like to access your location when running and displayed.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>To Record Audio With Video</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
