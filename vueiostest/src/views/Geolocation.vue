@@ -34,11 +34,7 @@ export default {
   methods: {
     geolocation() {
       let $data = this;
-<<<<<<< HEAD
-      let $active = false;
-      //console.log("$active", $active);
-=======
->>>>>>> 62fcb94d8f8bae422f31c34a620af0140de660d5
+
       async function getCoords() {
         const coordinates = await Geolocation.getCurrentPosition();
 
@@ -46,10 +42,6 @@ export default {
         //console.log("Current coords", coordinates.coords);
         //console.log("latitude", coordinates.coords.latitude);
         //console.log("current data latitude", $data.lat);
-<<<<<<< HEAD
-        //console.log("after async $active", $active);
-=======
->>>>>>> 62fcb94d8f8bae422f31c34a620af0140de660d5
 
         $data.lat = coordinates.coords.latitude;
         $data.lng = coordinates.coords.longitude;
@@ -68,18 +60,12 @@ export default {
           maximumAge: 0
         }
       );
-<<<<<<< HEAD
-
-      this.watchId = id;
-      //console.log("hit");
-=======
     },
     geolocationWatchData(data) {
       //console.log("geolocationWatch Data", data);
       this.lat = data.coords.latitude;
       this.lng = data.coords.longitude;
       this.spd = data.coords.speed || 0;
->>>>>>> 62fcb94d8f8bae422f31c34a620af0140de660d5
     },
     watchError(err) {
       //console.log("err", err);
@@ -87,10 +73,6 @@ export default {
     }
   },
   created() {
-<<<<<<< HEAD
-    //console.log("created");
-=======
->>>>>>> 62fcb94d8f8bae422f31c34a620af0140de660d5
     //this.geolocation();
     this.geolocationWatch();
   }
