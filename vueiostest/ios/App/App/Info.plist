@@ -40,8 +40,6 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>To Take Photos and Video</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Privacy - Location Always Usage Description</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Privacy - Location When In Use Usage Description</string>
 	<key>NSMicrophoneUsageDescription</key>
