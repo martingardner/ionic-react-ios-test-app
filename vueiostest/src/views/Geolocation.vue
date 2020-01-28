@@ -53,23 +53,30 @@ export default {
       getCoords();
     },
     geolocationWatch() {
+      const options = {
+        enableHighAccuracy: true,
+        timeout: 1000,
+        maximumAge: 0
+      };
+
+      /*
       navigator.geolocation.watchPosition(
         this.geolocationWatchData,
         this.watchError,
-        {
-          enableHighAccuracy: true,
-          timeout: 1000,
-          maximumAge: 0
-        }
+        options
       );
-
+*/
+      Geolocation.watchPosition(
+        options,
+        this.geolocationWatchData,
+        this.watchError
+      );
     },
     geolocationWatchData(data) {
       //console.log("geolocationWatch Data", data);
       this.lat = data.coords.latitude;
       this.lng = data.coords.longitude;
       this.spd = data.coords.speed || 0;
-
     },
     watchError(err) {
       //console.log("err", err);
@@ -77,8 +84,8 @@ export default {
     }
   },
   created() {
-    //this.geolocationWatch();
-    this.geolocation();
+    this.geolocationWatch();
+    //this.geolocation();
   }
 };
 </script>
