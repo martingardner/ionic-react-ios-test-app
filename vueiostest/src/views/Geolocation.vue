@@ -41,7 +41,7 @@ export default {
         const coordinates = await Geolocation.getCurrentPosition();
 
         //console.log("Current", coordinates);
-        console.log("Current coords", coordinates.coords);
+        //console.log("Current coords", coordinates.coords);
         //console.log("latitude", coordinates.coords.latitude);
         //console.log("current data latitude", $data.lat);
 
