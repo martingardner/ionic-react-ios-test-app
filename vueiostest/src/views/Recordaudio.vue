@@ -39,22 +39,22 @@ export default {
     recordaudio(evt) {
       console.log("recordaudio", evt);
       console.log("navigator.mediaDevices", navigator.mediaDevices);
-      if (navigator.mediaDevices.ondevicechange) {
-        navigator.mediaDevices
-          .getUserMedia({
-            audio: true,
-            video: false
-          })
-          .then(stream => {
-            if (window.URL) {
-              evt.target.srcObject = stream;
-            } else {
-              evt.target.src = stream;
-            }
-          });
-      } else {
-        this.errorMessage("no attached microphone");
-      }
+      //if (navigator.mediaDevices.ondevicechange) {
+      navigator.mediaDevices
+        .getUserMedia({
+          audio: true,
+          video: false
+        })
+        .then(stream => {
+          if (window.URL) {
+            evt.target.srcObject = stream;
+          } else {
+            evt.target.src = stream;
+          }
+        });
+      //} else {
+      //  this.errorMessage("no attached microphone");
+      //}
     },
     errorMessage(string) {
       console.log("errorMessage string", string);
@@ -69,5 +69,10 @@ export default {
 </script>
 
 <!--
-https://ionicframework.com/docs/enterprise/media
+https://developers.google.com/web/fundamentals/media/recording-audio
+https://stackoverflow.com/questions/45692526/ios-11-getusermedia-not-working
+https://stackoverflow.com/questions/50448285/switch-camera-using-mediadevices-getusermedia-in-vuejs-2
+https://stackoverflow.com/questions/30047056/is-it-possible-to-check-if-the-user-has-a-camera-and-microphone-and-if-the-permi
+
+
 -->
