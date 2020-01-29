@@ -5,8 +5,9 @@
       <Navigation />
       <h1>Record Audio</h1>
       <ion-button @click="recordaudio">Record</ion-button>
-      <div v-if="captureError">{{ captureError }}</div>
-      <div v-if="captureSuccess">success</div>
+      <div>recording status: {{ audioStatus }}</div>
+      <div v-if="audioSuccess">success</div>
+      <div v-if="audioError">{{ audioErrorMessage }}</div>
     </ion-content>
   </div>
 </template>
@@ -20,8 +21,11 @@ export default {
   name: "Recordaudio",
   data() {
     return {
-      captureError: null,
-      captureSuccess: false
+      audioStatus: 0,
+      audioError: false,
+      audioSuccess: false,
+      audioErrorMessage: null,
+      audioRecorder: null
     };
   },
   components: {
@@ -29,25 +33,37 @@ export default {
   },
   methods: {
     recordaudio() {
-      console.log("recordaudio");
+      //console.log("recordaudio");
       /*
       MediaCapture.captureAudio().then(res => {
         console.log("capture audio", res);
       });
       */
-
+      /*
       navigator.device.capture.captureAudio(
         this.audioCaptureSuccess(),
         this.audioCaptureFailure()
       );
+      */
+      this.mediaRecorder = new Media(
+        "",
+        this.audioCaptureSuccess(),
+        this.audioCaptureFailure(),
+        this.audioCaptureStatus()
+      );
     },
     audioCaptureSuccess(data) {
-      console.log("audioCaptureSuccess data", data);
-      this.captureSuccess = true;
+      //console.log("audioCaptureSuccess data", data);
+      this.audioSuccess = true;
+      this.audioFailure = false;
     },
     audioCaptureFailure(err) {
-      this.captureError = err.code;
-      this.captureSuccess = false;
+      this.audioSuccess = false;
+      this.audioFailure = true;
+      this.audioErrorMessage = err;
+    },
+    audioCaptureStatus(status) {
+      this.audioStatus = status;
     }
   }
 };
