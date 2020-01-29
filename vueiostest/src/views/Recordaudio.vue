@@ -4,10 +4,18 @@
     <ion-content class="ion-padding">
       <Navigation />
       <h1>Record Audio</h1>
+
       <ion-button @click="recordaudio">Record</ion-button>
+      <div v-if="errMessage">Error:{{ errMessage }}</div>
+      <!--
+      <input type="file" @click="recordaudio" accept="audio/*" capture id="recorder" />
+      <audio id="player" controls></audio>
+      -->
+      <!--
       <div>recording status: {{ audioStatus }}</div>
       <div v-if="audioSuccess">success</div>
       <div v-if="audioError">{{ audioErrorMessage }}</div>
+      -->
     </ion-content>
   </div>
 </template>
@@ -21,55 +29,45 @@ export default {
   name: "Recordaudio",
   data() {
     return {
-      audioStatus: 0,
-      audioError: false,
-      audioSuccess: false,
-      audioErrorMessage: null,
-      audioRecorder: null
+      errMessage: ""
     };
   },
   components: {
     Navigation
   },
   methods: {
-    recordaudio() {
-      //console.log("recordaudio");
-      /*
-      MediaCapture.captureAudio().then(res => {
-        console.log("capture audio", res);
-      });
-      */
-      /*
-      navigator.device.capture.captureAudio(
-        this.audioCaptureSuccess(),
-        this.audioCaptureFailure()
-      );
-      */
-      this.mediaRecorder = new Media(
-        "",
-        this.audioCaptureSuccess(),
-        this.audioCaptureFailure(),
-        this.audioCaptureStatus()
-      );
+    recordaudio(evt) {
+      console.log("recordaudio", evt);
+      console.log("navigator.mediaDevices", navigator.mediaDevices);
+      if (navigator.mediaDevices.ondevicechange) {
+        navigator.mediaDevices
+          .getUserMedia({
+            audio: true,
+            video: false
+          })
+          .then(stream => {
+            if (window.URL) {
+              evt.target.srcObject = stream;
+            } else {
+              evt.target.src = stream;
+            }
+          });
+      } else {
+        this.errorMessage("no attached microphone");
+      }
     },
-    audioCaptureSuccess(data) {
-      //console.log("audioCaptureSuccess data", data);
-      this.audioSuccess = true;
-      this.audioFailure = false;
-    },
-    audioCaptureFailure(err) {
-      this.audioSuccess = false;
-      this.audioFailure = true;
-      this.audioErrorMessage = err;
-    },
-    audioCaptureStatus(status) {
-      this.audioStatus = status;
+    errorMessage(string) {
+      console.log("errorMessage string", string);
+      if (string === "clear") {
+        this.errMessage = "";
+      } else {
+        this.errMessage = string;
+      }
     }
   }
 };
 </script>
 
 <!--
-cordova-plugin-media-capture
-https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-media-capture/
+https://ionicframework.com/docs/enterprise/media
 -->
