@@ -33,6 +33,14 @@
           </ion-label>
         </ion-item>
       </li>
+      <li>
+        <ion-item button @click="$router.push('/recordaudio')">
+          <ion-icon name="home"></ion-icon>
+          <ion-label>
+            <span>Record Audio</span>
+          </ion-label>
+        </ion-item>
+      </li>
     </ul>
   </div>
 </template>
