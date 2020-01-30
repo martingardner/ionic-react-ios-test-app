@@ -92,4 +92,7 @@ export default {
 
 <!--
 https://capacitor.ionicframework.com/docs/apis/geolocation/#example
+
+https://stackoverflow.com/questions/36877281/how-does-googles-position-coordinates-speed-translate-into-mph
+speed is in meters per hour, conversion is ~ 2.23694
 -->
