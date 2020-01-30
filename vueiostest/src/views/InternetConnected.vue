@@ -4,7 +4,7 @@
     <ion-content class="ion-padding">
       <Navigation />
       <h1>Internet Connected</h1>
-      <div>Internet Status {{ statusconnected }}</div>
+      <div>Internet Status {{ online }}</div>
     </ion-content>
   </div>
 </template>
@@ -16,7 +16,8 @@ export default {
   name: "InternetConnected",
   data() {
     return {
-      statusconnected: null
+      //statusconnected: null
+      online: navigator.onLine
     };
   },
   components: {
@@ -24,17 +25,17 @@ export default {
   },
   methods: {
     internetStatus() {
-      navigator.onLine
-        ? (this.statusconnected = true)
-        : (this.statusconnected = false);
-    },
-    statusListeners() {
-      window.addEventListener("online", this.internetStatus());
-      window.addEventListener("offline", this.internetStatus());
+      this.online = navigator.onLine;
+      this.$emit(this.online ? "online" : "offline");
     }
   },
-  created() {
-    this.internetStatus();
+  mounted() {
+    window.addEventListener("online", this.internetStatus);
+    window.addEventListener("offline", this.internetStatus);
+  },
+  beforeDestroy() {
+    window.removeEventListener("online", this.internetStatus);
+    window.removeEventListener("offline", this.internetStatus);
   }
 };
 </script>
