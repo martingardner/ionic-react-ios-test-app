@@ -27,6 +27,10 @@ export default {
       navigator.onLine
         ? (this.statusconnected = true)
         : (this.statusconnected = false);
+    },
+    statusListeners() {
+      window.addEventListener("online", this.internetStatus());
+      window.addEventListener("offline", this.internetStatus());
     }
   },
   created() {
