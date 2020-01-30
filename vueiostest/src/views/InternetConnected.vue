@@ -39,3 +39,7 @@ export default {
   }
 };
 </script>
+
+<!--
+https://dev.to/jcalixte/creating-an-vuejs-component-for-online-offline-events-31mc
+-->
