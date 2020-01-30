@@ -41,6 +41,14 @@
           </ion-label>
         </ion-item>
       </li>
+      <li>
+        <ion-item button @click="$router.push('/internetconnected')">
+          <ion-icon name="home"></ion-icon>
+          <ion-label>
+            <span>Internet Connected</span>
+          </ion-label>
+        </ion-item>
+      </li>
     </ul>
   </div>
 </template>

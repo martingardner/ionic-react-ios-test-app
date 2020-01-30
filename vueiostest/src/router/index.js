@@ -4,6 +4,7 @@ import About from "@/views/About.vue";
 import Picture from "@/views/Picture.vue";
 import Geolocation from "@/views/Geolocation.vue";
 import Recordaudio from "@/views/Recordaudio.vue";
+import InternetConnected from "@/views/InternetConnected.vue";
 import { IonicVueRouter } from "@ionic/vue";
 
 Vue.use(IonicVueRouter);
@@ -36,6 +37,11 @@ export default new IonicVueRouter({
       path: "/recordaudio",
       name: "recordaudio",
       component: Recordaudio
+    },
+    {
+      path: "/internetconnected",
+      name: "internetconnected",
+      component: InternetConnected
     }
   ]
 });
