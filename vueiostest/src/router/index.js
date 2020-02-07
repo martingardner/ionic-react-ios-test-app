@@ -5,6 +5,7 @@ import Picture from "@/views/Picture.vue";
 import Geolocation from "@/views/Geolocation.vue";
 import Recordaudio from "@/views/Recordaudio.vue";
 import InternetConnected from "@/views/InternetConnected.vue";
+import BarCodeScanner from "@/views/BarCodeScanner.vue";
 import { IonicVueRouter } from "@ionic/vue";
 
 Vue.use(IonicVueRouter);
@@ -42,6 +43,11 @@ export default new IonicVueRouter({
       path: "/internetconnected",
       name: "internetconnected",
       component: InternetConnected
+    },
+    {
+      path: "/barcodescanner",
+      name: "barcodescanner",
+      component: BarCodeScanner
     }
   ]
 });

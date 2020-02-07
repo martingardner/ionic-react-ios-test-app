@@ -49,6 +49,14 @@
           </ion-label>
         </ion-item>
       </li>
+      <li>
+        <ion-item button @click="$router.push('/barcodescanner')">
+          <ion-icon name="home"></ion-icon>
+          <ion-label>
+            <span>Barcode Scanner</span>
+          </ion-label>
+        </ion-item>
+      </li>
     </ul>
   </div>
 </template>
