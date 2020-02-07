@@ -43,9 +43,10 @@ export default {
     scanSuccess(result) {
       console.log("success", result);
       this.scanSuccess = true;
-      this.scanResults.canceled = result.canceled;
-      this.scanResults.text = result.text;
-      this.scanResults.format = result.format;
+      this.scanResults = result;
+      //this.scanResults.canceled = result.canceled;
+      //this.scanResults.text = result.text;
+      //this.scanResults.format = result.format;
     },
     scanFailure(error) {
       this.scanSuccess = false;
