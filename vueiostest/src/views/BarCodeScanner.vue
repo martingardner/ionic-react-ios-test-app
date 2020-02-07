@@ -5,8 +5,8 @@
       <Navigation />
       <h1>BarCode Scanner</h1>
       <ion-button @click="scan">scan</ion-button>
-      <div class="scan-results" >
-        <div>canceled: {{ scanResults.canceled }}</div>
+      <div class="scan-results" v-if="scanStatus">
+        <div>canceled: {{ scanResults.cancelled }}</div>
         <div>text: {{ scanResults.text }}</div>
         <div>format: {{ scanResults.format }}</div>
       </div>
@@ -22,34 +22,29 @@ export default {
   data() {
     return {
       scanStatus: false,
-      scanResults: {
-        canceled: null,
-        text: null,
-        format: null
-      }
+      scanResults: null
     };
   },
   methods: {
     scan() {
+      
       try {
+        
         window.cordova.plugins.barcodeScanner.scan(
           result => this.scanSuccess(result),
           error => this.scanFailure(error)
-        );
+        ).bind(this);
       } catch (e) {
         console.log("scanner error", e);
       }
     },
     scanSuccess(result) {
       console.log("success", result);
-      this.scanSuccess = true;
+      this.scanStatus = true;
       this.scanResults = result;
-      //this.scanResults.canceled = result.canceled;
-      //this.scanResults.text = result.text;
-      //this.scanResults.format = result.format;
     },
     scanFailure(error) {
-      this.scanSuccess = false;
+      this.scanStatus = false;
       console.log("scanFailure", error);
     }
   },
