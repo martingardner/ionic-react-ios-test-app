@@ -35,4 +35,12 @@ export default {
 <!--
 https://medium.com/better-programming/mobile-development-w-vuejs-and-ionic-capacitor-plugins-cb86474c01b1
 https://github.com/phonegap/phonegap-plugin-barcodescanner
+
+on an ios app, this has given me back a result.  Don't know what the results tell me, but
+sample success result 
+{
+    cancelled: 0,
+    text: "B07QF732FQ",
+    format: "CODE_128"
+}
 -->
