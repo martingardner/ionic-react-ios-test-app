@@ -5,6 +5,11 @@
       <Navigation />
       <h1>BarCode Scanner</h1>
       <ion-button @click="scan">scan</ion-button>
+      <div class="scan-results" v-if="scanSuccess">
+        <div>canceled: {{ scanResults.canceled }}</div>
+        <div>text: {{ scanResults.text }}</div>
+        <div>format: {{ scanResults.format }}</div>
+      </div>
     </ion-content>
   </div>
 </template>
@@ -14,16 +19,38 @@ import Navigation from "@/components/Navigation.vue";
 
 export default {
   name: "BarCodeScanner",
+  data(){
+      return {
+          scanSuccess : false,
+          scanResults : {
+              canceled : null,
+              text: null,
+              format: null
+          }
+
+      }
+  }
   methods: {
     scan() {
       try {
         window.cordova.plugins.barcodeScanner.scan(
-          result => console.log("success", result),
-          error => console.log("scan failed", error)
+          result => this.scanSuccess(result),
+          error => this.scanFailure(error)
         );
       } catch (e) {
         console.log("scanner error", e);
       }
+    },
+    scanSuccess(result){
+        console.log("success", result)
+        this.scanSuccess = true;
+        this.scanResults.canceled = result.canceled;
+        this.scanResults.text = result.text;
+        this.scanResults.format = result.format;
+    },
+    scanFailure(error){
+        this.scanSuccess = false;
+        console.log("scanFailure", error)
     }
   },
   components: {
