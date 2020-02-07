@@ -19,17 +19,16 @@ import Navigation from "@/components/Navigation.vue";
 
 export default {
   name: "BarCodeScanner",
-  data(){
-      return {
-          scanSuccess : false,
-          scanResults : {
-              canceled : null,
-              text: null,
-              format: null
-          }
-
+  data() {
+    return {
+      scanSuccess: false,
+      scanResults: {
+        canceled: null,
+        text: null,
+        format: null
       }
-  }
+    };
+  },
   methods: {
     scan() {
       try {
@@ -41,16 +40,16 @@ export default {
         console.log("scanner error", e);
       }
     },
-    scanSuccess(result){
-        console.log("success", result)
-        this.scanSuccess = true;
-        this.scanResults.canceled = result.canceled;
-        this.scanResults.text = result.text;
-        this.scanResults.format = result.format;
+    scanSuccess(result) {
+      console.log("success", result);
+      this.scanSuccess = true;
+      this.scanResults.canceled = result.canceled;
+      this.scanResults.text = result.text;
+      this.scanResults.format = result.format;
     },
-    scanFailure(error){
-        this.scanSuccess = false;
-        console.log("scanFailure", error)
+    scanFailure(error) {
+      this.scanSuccess = false;
+      console.log("scanFailure", error);
     }
   },
   components: {
