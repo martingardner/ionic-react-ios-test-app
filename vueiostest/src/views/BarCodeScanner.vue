@@ -5,7 +5,7 @@
       <Navigation />
       <h1>BarCode Scanner</h1>
       <ion-button @click="scan">scan</ion-button>
-      <div class="scan-results" v-if="scanStatus">
+      <div class="scan-results" >
         <div>canceled: {{ scanResults.canceled }}</div>
         <div>text: {{ scanResults.text }}</div>
         <div>format: {{ scanResults.format }}</div>
